@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>The earthquake map</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="container"></div>
+    <div id="title">The earthquake map of this week</div>
+    <div id="content">Do you know how many earthquakes happened in/near the US just for the last week? <br> Zoom out and click on the markers to explore when these quakes happened and their magnitudes. <i>(Only earthquakes > M2.5 are displayed)</i></div>
+    <div id="legendA">Red = Quakes stronger than M5.0</div>
+    <div id="legendB">Orange = Quakes between M4.0 and M5.0</div>
+    <div id="legendC">Yellow = Quakes weaker than M4.0</div>
+    <br>
+    <button id="fit">Get back to where we are - NYC</button>
+</body>
+
+<script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
+<script src="js/1wearthquake.js"></script>
+<script src="js/scripts.js"></script>
+
+</html>
