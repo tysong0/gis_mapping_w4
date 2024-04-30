@@ -10,7 +10,7 @@ body {
     background-color: rgb(255, 255, 255);
     position: relative;
     text-align: center;
-    font-size: 22px;
+    font-size: 24px;
     font-weight: bolder;
     padding: 5px;
 }
@@ -22,8 +22,7 @@ body {
     position: relative;
     border-radius: 10px;
     text-align: left;
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 18px;
     background: rgba(255, 255, 255, 0.42);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(6.2px);
@@ -37,8 +36,7 @@ body {
     padding-left: 20px;
     position: relative;
     text-align: left;
-    font-size: 16px;
-    font-weight: bolder;
+    font-size: 18px;
     width: 30%;
     background: rgba(255, 23, 23, 0.546);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -50,8 +48,7 @@ body {
     padding-left: 20px;
     position: relative;
     text-align: left;
-    font-size: 16px;
-    font-weight: bolder;
+    font-size: 18px;
     width: 30%;
     background: rgba(255, 170, 72, 0.548);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -63,8 +60,7 @@ body {
     padding-left: 20px;
     position: relative;
     text-align: left;
-    font-size: 16px;
-    font-weight: bolder;
+    font-size: 18px;
     width: 30%;
     background: rgba(255, 252, 79, 0.42);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);

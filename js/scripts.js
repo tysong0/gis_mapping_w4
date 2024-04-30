@@ -20,13 +20,12 @@ const map = new mapboxgl.Map({
 })
 
 // add a navigation control
-map.addControl(new mapboxgl.NavigationControl());
+map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
 
 // add a scale to the map
 map.addControl(new mapboxgl.ScaleControl());
 
 map.on('load', () => {
-
     map.resize();
 
     map.addSource('states', {
@@ -118,7 +117,7 @@ map.on('load', () => {
             colour = "yellow";
         }
 
-        //create popup incl. quake info and stick them on the markers
+        //create popup incl. quake info and stick them on the markers on hover
         const popup = new mapboxgl.Popup({
             offset: 40,
             anchor: 'bottom',
@@ -159,7 +158,7 @@ map.on('load', () => {
     map.on('click', 'states-fill', (e) => {
         new mapboxgl.Popup()
             .setLngLat(e.lngLat)
-            .setHTML(e.features[0].properties.name)
+            .setHTML(`This is ${e.features[0].properties.name}. During xxxx to xxxx, ${e.features[0].properties.count} earthquakes happened there.`)
             .addTo(map);
     });
 
