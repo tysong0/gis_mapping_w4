@@ -15,7 +15,7 @@ const map = new mapboxgl.Map({
     container: 'container', // container ID
     center: STARTING_CENTER, // starting position [lng, lat]
     style: 'mapbox://styles/mapbox/outdoors-v12',
-    zoom: 8.13, // starting zoom
+    zoom: 6.13, // starting zoom
     maxBounds: bounds // Set the map's geographical boundaries.
 })
 
@@ -61,7 +61,7 @@ map.on('load', () => {
         'layout': {},
         'paint': {
             'line-color': '#000',
-            'line-width': 2.5
+            'line-width': 1.5
         }
     }, 'path-pedestrian-label');
 
@@ -123,8 +123,8 @@ map.on('load', () => {
             anchor: 'bottom',
             closeButton: false,
             closeOnClick: false
-        }).setText(
-            `There was a M${earthquakerecord.mag} earthquake, happened at ${localDate} local time.`
+        }).setHTML(
+            `<h3> Earthquake profile: </h3><h4> Magnitude: <b> M${earthquakerecord.mag} </b> <br> Happened on: <b> ${localDate} </b> </h4>`
         );
 
         //create the markers
@@ -158,7 +158,7 @@ map.on('load', () => {
     map.on('click', 'states-fill', (e) => {
         new mapboxgl.Popup()
             .setLngLat(e.lngLat)
-            .setHTML(`This is ${e.features[0].properties.name}. During xxxx to xxxx, ${e.features[0].properties.count} earthquakes happened there.`)
+            .setHTML(`<h3> State profile: </h3><h4> In <b> ${e.features[0].properties.name} </b>, ${e.features[0].properties.count} earthquakes happened during 1638 to 1985. </h4>`)
             .addTo(map);
     });
 
