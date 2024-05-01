@@ -9,10 +9,11 @@
     <link href="css/styles.css" rel="stylesheet">
 </head>
 
+<!--Body of the webpage-->
 <body>
     <div id="container"></div>
     <div id="title">The earthquake map of this week</div>
-    <div id="content">Do you know how many earthquakes happened in/near the US just for the last week? <br> Zoom out and hover on the markers to explore when these quakes happened and their magnitudes. <i>(Only earthquakes > M2.5 are displayed)</i> <br> Click on states to learn how many earthquakes have occured there historically. States where there were more earthquakes are displayed darker red in color. </div>
+    <div id="content">Do you know how many earthquakes happened in/near the US just for the last week? <br> Individual earthquakes are displayed as markers while states are colored by their relative earthquake dangerousity - with deeper red means higher danger. <br> <b><i>Zoom out</i></b> and <b><i>hover on</i></b> the markers to explore when these quakes happened and their magnitudes. <i>(Only earthquakes > M2.5 are displayed)</i> <br> <b><i>Click on</i></b> states to learn how many earthquakes have occured there historically.</div>
     <div id="legendA">Red = Quakes stronger than M5.0</div>
     <div id="legendB">Orange = Quakes between M4.0 and M5.0</div>
     <div id="legendC">Yellow = Quakes weaker than M4.0</div>
@@ -20,10 +21,13 @@
     <button id="fit">Get back to where we are - NYC</button>
 </body>
 
+<!--Introducing the js to be used-->
 <script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
-<script src="js/1wearthquake.js"></script>
-<script src="js/moment.js"></script>
-<script src="js/scripts.js"></script>
-<script src="js/quakecount.js"></script>
+<script src="js/1wearthquake.js"></script> <!--json of earthquake lib-->
+<script src="js/moment.js"></script> <!--js to format raw time stamps-->
+<script src="js/scripts.js"></script> <!--main js lib-->
+<!--temprarily redundant js file
+    <script src="js/quakecount.js"></script>
+-->
 
 </html>

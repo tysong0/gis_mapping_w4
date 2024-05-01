@@ -1,3 +1,4 @@
+// Define some variables, including location
 var STARTING_CENTER = [-73.26651, 40.79090]
 var ZOOM_SW = [-74.87235, 40.19620]
 var ZOOM_NE = [-71.66068, 41.38031]
@@ -9,46 +10,48 @@ const bounds = [
     [-44.18682, 60.65736] // Northeast coordinates
 ];
 
-//introduce the map
+// Introduce the map
 mapboxgl.accessToken = 'pk.eyJ1IjoidGlhbnlzb25nIiwiYSI6ImNsdWx1OGVodzBqcWwyaW9hOW1oaWRnOWwifQ.E4RNl8ESZulQlGSzXECAMw';
 const map = new mapboxgl.Map({
     container: 'container', // container ID
     center: STARTING_CENTER, // starting position [lng, lat]
     style: 'mapbox://styles/mapbox/outdoors-v12',
     zoom: 6.13, // starting zoom
-    maxBounds: bounds // Set the map's geographical boundaries.
+    maxBounds: bounds // Set the map's geographical boundaries
 })
 
-// add a navigation control
+// add a navigation control at the bottom right corner
 map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
 
 // add a scale to the map
 map.addControl(new mapboxgl.ScaleControl());
 
+// map load
 map.on('load', () => {
     map.resize();
 
+    // draw the states
     map.addSource('states', {
         "type": "geojson",
         "data": "data/us_states.geojson"
     });
 
-    // add a fill layer using the PLUTO data
+    // add a fill layer to the states
     map.addLayer({
         'id': 'states-fill',
         'type': 'fill',
         'source': 'states',
         'layout': {},
         'paint': {
-            'fill-color': { // use an expression for data-driven styling
+            'fill-color': { // data-driven color styling
                 property: 'count',
-                stops: [[0, '#fff'], [13000, '#f00']]
+                stops: [[0, '#fff'], [12000, '#f00']] // earthquake count from 0 to 12000, color from #fff to #f00 
             },
             'fill-opacity': [
                 'case',
                 ['boolean', ['feature-state', 'hover'], false],
-                1.5,
-                0.5
+                1.3, // fill color transparency if hovered
+                0.7  // default fill color transparency
             ]
         }
     });
@@ -65,7 +68,7 @@ map.on('load', () => {
         }
     }, 'path-pedestrian-label');
 
-    // When the user moves their mouse over the state-fill layer, we'll update the feature state for the feature under the mouse.
+    // When the user moves their mouse over the state-fill layer, update the feature state for the feature under the mouse.
     map.on('mousemove', 'states-fill', (e) => {
         if (e.features.length > 0) {
             if (hoveredPolygonId !== null) {
@@ -139,12 +142,7 @@ map.on('load', () => {
         markerDiv.addEventListener('mouseleave', () => marker.togglePopup());
     })
 
-    /*
-         *  When a user clicks the button, `fitBounds()` zooms and pans
-         *  the viewport to contain a bounding box that surrounds Kenya.
-         *  The [lng, lat] pairs are the southwestern and northeastern
-         *  corners of the specified geographical bounds.
-         */
+    /* Define the function of the zoom button */
     document.getElementById('fit').addEventListener('click', () => {
         map.fitBounds([
             ZOOM_SW, // southwestern corner of the bounds
@@ -154,22 +152,22 @@ map.on('load', () => {
 
     // When a click event occurs on a feature in the states layer,
     // open a popup at the location of the click, with description
-    // HTML from the click event's properties.
+    // HTML from the click event's properties
     map.on('click', 'states-fill', (e) => {
         new mapboxgl.Popup()
             .setLngLat(e.lngLat)
-            .setHTML(`<h3> State profile: </h3><h4> In <b> ${e.features[0].properties.name} </b>, ${e.features[0].properties.count} earthquakes happened during 1638 to 1985. </h4>`)
+            .setHTML(`<h3> State profile: </h3><h4> In <b> ${e.features[0].properties.name} </b>, <b>${e.features[0].properties.count}</b> earthquakes happened during 1638 to 1985. </h4>`)
             .addTo(map);
     });
 
     // Change the cursor to a pointer when
-    // the mouse is over the states layer.
+    // the mouse is over the states layer
     map.on('mouseenter', 'states-fill', () => {
         map.getCanvas().style.cursor = 'pointer';
     });
 
     // Change the cursor back to a pointer
-    // when it leaves the states layer.
+    // when it leaves the states layer
     map.on('mouseleave', 'states-fill', () => {
         map.getCanvas().style.cursor = '';
     });
