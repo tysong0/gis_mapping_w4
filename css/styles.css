@@ -7,7 +7,7 @@ body {
 
 /*styling of the title and introduction of the page*/
 #title {
-    background-color: #898989;
+    background-color: #786143;
     color: #fff;
     position: relative;
     text-align: center;
@@ -88,12 +88,12 @@ body {
     text-align: center;
     color: #fff;
     /* From https://css.glass */
-    background: rgba(150, 150, 150, 0.729);
+    background: rgba(120, 97, 67, 0.70);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(7.8px);
     -webkit-backdrop-filter: blur(7.8px);
-    border: 1px solid rgba(150, 150, 150, 0.7);
+    border: 1px solid rgba(120, 97, 75, 0.7);
 }
 
 #fit:disabled {
@@ -130,7 +130,7 @@ body {
   }
   
   .mapboxgl-popup-content h3 {
-    background: #898989;
+    background: #786143;
     color: #fff;
     margin: 0;
     padding: 10px;
@@ -154,5 +154,5 @@ body {
   }
   
   .mapboxgl-popup-anchor-top > .mapboxgl-popup-tip {
-    border-bottom-color: #a6a6a6;
+    border-bottom-color: #786143;
   }

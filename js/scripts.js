@@ -50,7 +50,7 @@ map.on('load', () => {
             'fill-opacity': [
                 'case',
                 ['boolean', ['feature-state', 'hover'], false],
-                1.3, // fill color transparency if hovered
+                1, // fill color transparency if hovered
                 0.7  // default fill color transparency
             ]
         }
